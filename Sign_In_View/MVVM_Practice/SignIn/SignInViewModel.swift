@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 
-struct PersonViewModel {
-    typealias Listener = (Person) -> Void
+struct SignInViewModel {
+    typealias Listener = (Account) -> Void
     var listener: Listener?
     
-    var person: Person {
+    var account: Account {
         didSet {
-            listener?(person)
+            listener?(account)
         }
     }
 
