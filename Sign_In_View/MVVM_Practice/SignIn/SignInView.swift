@@ -16,16 +16,29 @@ class ViewController: UIViewController {
         didSet {
             emailTextField.bind { [weak self] email in
                 self?.signInViewModel.account.email = email
+                if email.count < 1 {
+                    self?.emailTextField.textFieldBorderSetup(result: .Fail)
+                }else{
+                    self?.emailTextField.textFieldBorderSetup(result: .Success)
+                }
             }
-            emailTextField.setUpImage(imageName: "exclamationmark.triangle.fill", on: .right)
             emailTextField.delegate = self
         }
     }
     
     var pwTextField: BindingTextField! {
         didSet {
+            pwTextField.textContentType = .password
             pwTextField.bind { [weak self] pw in
+                print("pw : \(pw) \(self?.signInViewModel.account)")
                 self?.signInViewModel.account.password = pw
+                
+                if pw.count < 1 || pw != self?.signInViewModel.account.password2 {
+                    self?.pwTextField.textFieldBorderSetup(result: .Fail)
+                }else{
+                    self?.pwTextField.textFieldBorderSetup(result: .Success)
+                    self?.pw2TextField.textFieldBorderSetup(result: .Success)
+                }
             }
             pwTextField.delegate = self
         }
@@ -33,8 +46,17 @@ class ViewController: UIViewController {
     
     var pw2TextField: BindingTextField! {
         didSet {
+            pw2TextField.textContentType = .password
             pw2TextField.bind { [weak self] pw2 in
                 self?.signInViewModel.account.password2 = pw2
+                print("pw2 : \(pw2) \(self?.signInViewModel.account)")
+                    
+                if pw2.count < 1 || pw2 != self?.signInViewModel.account.password {
+                    self?.pw2TextField.textFieldBorderSetup(result: .Fail)
+                }else{
+                    self?.pwTextField.textFieldBorderSetup(result: .Success)
+                    self?.pw2TextField.textFieldBorderSetup(result: .Success)
+                }
             }
             pw2TextField.delegate = self
         }
@@ -44,6 +66,11 @@ class ViewController: UIViewController {
         didSet {
             nameTextField.bind { [weak self] name in
                 self?.signInViewModel.account.name = name
+                if name.count < 1 {
+                    self?.nameTextField.textFieldBorderSetup(result: .Fail)
+                }else{
+                    self?.nameTextField.textFieldBorderSetup(result: .Success)
+                }
             }
             nameTextField.delegate = self
         }
@@ -53,6 +80,11 @@ class ViewController: UIViewController {
         didSet {
             stuidTextField.bind { [weak self] student_id in
                 self?.signInViewModel.account.student_id = student_id
+                if student_id.count < 1 {
+                    self?.stuidTextField.textFieldBorderSetup(result: .Fail)
+                }else{
+                    self?.stuidTextField.textFieldBorderSetup(result: .Success)
+                }
             }
             stuidTextField.delegate = self
         }
@@ -97,9 +129,6 @@ class ViewController: UIViewController {
         pw2TextField = BindingTextField()
         nameTextField = BindingTextField()
         stuidTextField = BindingTextField()
-        
-        pwTextField.textContentType = .password
-        pw2TextField.textContentType = .password
     }
     func initTitle(){
         emailTitle.text = "Email"
@@ -197,20 +226,18 @@ class ViewController: UIViewController {
 
 extension ViewController : UITextFieldDelegate{
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        print(textField.text!)
-        if textField.text!.count < 10 {
-            //textField.redBorderSet()
-            textField.layer.borderColor = UIColor.systemRed.cgColor
-        } else {
-            textField.layer.borderColor = UIColor.systemBlue.cgColor
-        }
-        
+//        print(textField.text!)
+//        if textField.text!.count < 10 {
+//            //textField.redBorderSet()
+//            textField.layer.borderColor = UIColor.systemRed.cgColor
+//        } else {
+//            textField.layer.borderColor = UIColor.systemBlue.cgColor
+//        }
+//
         return true
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        print("start editting")
-        
         return true
     }
 }

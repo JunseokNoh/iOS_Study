@@ -23,22 +23,16 @@ class BindingTextField: UITextField {
     }
     
     override func draw(_ rect: CGRect) {
-      setup()
+        setup()
+        setLeftPaddingPoints(CGFloat(10))
+        setUpImage(imageName: "exclamationmark.triangle.fill", on: .right, color: UIColor.systemRed)
     }
     
     func setup() {
-        let border = CAShapeLayer()
-        
-        let borderWidth:CGFloat = 0.5
+        let borderWidth:CGFloat = 1.5
         let cornerRadius:CGFloat = 3
-
-        border.lineWidth = borderWidth
-        border.frame = self.bounds
-        border.fillColor = nil
-        border.strokeColor = UIColor.gray.cgColor
-        border.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: cornerRadius).cgPath
-        
-        self.layer.addSublayer(border)
+        self.layer.borderWidth = borderWidth
+        self.layer.borderColor = UIColor.systemRed.cgColor
         self.layer.cornerRadius = cornerRadius
    }
     
@@ -50,7 +44,7 @@ enum TextFieldImageSide {
 }
 
 extension BindingTextField {
-    func setUpImage(imageName: String, on side: TextFieldImageSide) {
+    func setUpImage(imageName: String, on side: TextFieldImageSide, color : UIColor) {
         let imageView = UIImageView(frame: CGRect(x: 10, y: 5, width: 30, height: 30))
         if let imageWithSystemName = UIImage(systemName: imageName) {
             imageView.image = imageWithSystemName
@@ -66,9 +60,40 @@ extension BindingTextField {
             leftView = imageContainerView
             leftViewMode = .always
         case .right:
-            imageView.tintColor = .red
+            imageView.tintColor = color
             rightView = imageContainerView
             rightViewMode = .always
         }
+    }
+    
+    
+    func setLeftPaddingPoints(_ amount:CGFloat){ 
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.leftView = paddingView
+        self.leftViewMode = .always
+    }
+    
+    enum pwResult{
+        case Success
+        case Fail
+    }
+    
+    func textFieldBorderSetup(result : pwResult){
+        switch result {
+        case .Success:
+            setUpBorderColor(color: UIColor.systemBlue)
+            setUpImage(imageName: "exclamationmark.triangle.fill", on: .right, color: UIColor.systemBlue)
+        case .Fail:
+            setUpBorderColor(color: UIColor.systemRed)
+            setUpImage(imageName: "exclamationmark.triangle.fill", on: .right, color: UIColor.systemRed)
+        }
+        
+    }
+        
+}
+
+extension UITextField{
+    func setUpBorderColor(color : UIColor){
+        self.layer.borderColor = color.cgColor
     }
 }
