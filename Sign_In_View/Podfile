@@ -7,4 +7,6 @@ target 'MVVM_Practice' do
 
   # Pods for MVVM_Practice
   pod 'SnapKit'
+  pod 'Alamofire'
+
 end

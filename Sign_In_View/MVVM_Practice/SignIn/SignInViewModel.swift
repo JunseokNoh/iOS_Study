@@ -8,17 +8,21 @@
 import Foundation
 import UIKit
 
-struct SignInViewModel {
+class SignInViewModel {
     typealias Listener = (Account) -> Void
     var listener: Listener?
+    var account: Account
     
-    var account: Account {
-        didSet {
-            listener?(account)
-        }
+    init(listener : Listener?, account : Account){
+        self.listener = listener
+        self.account = account
+    }
+    
+    func bind(listener: Listener?) {
+        self.listener = listener
     }
 
-    mutating func bind(listener: Listener?) {
-        self.listener = listener
+    @objc func sendAccount(_ button: UIButton) {
+        print(account)
     }
 }

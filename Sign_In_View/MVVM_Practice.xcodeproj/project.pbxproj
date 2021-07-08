@@ -69,6 +69,7 @@
 		6897E4482692CF5A00F99262 /* MVVM_Practice */ = {
 			isa = PBXGroup;
 			children = (
+				6897E4682697655E00F99262 /* Network */,
 				6897E4672694865500F99262 /* Custom */,
 				6897E463269443B800F99262 /* SignIn */,
 				6897E4492692CF5A00F99262 /* AppDelegate.swift */,
@@ -97,6 +98,13 @@
 				6897E4612692D31100F99262 /* BindingTextField.swift */,
 			);
 			path = Custom;
+			sourceTree = "<group>";
+		};
+		6897E4682697655E00F99262 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		A1369BD82160F35EA238DFFE /* Pods */ = {

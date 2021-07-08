@@ -22,13 +22,13 @@ class BindingTextField: UITextField {
         textChanged(text)
     }
     
-    override func draw(_ rect: CGRect) {
-        setup()
+    func draw(){
+        setUpBorder()
         setLeftPaddingPoints(CGFloat(10))
         setUpImage(imageName: "exclamationmark.triangle.fill", on: .right, color: UIColor.systemRed)
     }
     
-    func setup() {
+    func setUpBorder() {
         let borderWidth:CGFloat = 1.5
         let cornerRadius:CGFloat = 3
         self.layer.borderWidth = borderWidth
@@ -82,14 +82,24 @@ extension BindingTextField {
         switch result {
         case .Success:
             setUpBorderColor(color: UIColor.systemBlue)
-            setUpImage(imageName: "exclamationmark.triangle.fill", on: .right, color: UIColor.systemBlue)
+            removeImage(on: .right)
+            //setUpImage(imageName: "exclamationmark.triangle.fill", on: .right, color: UIColor.systemBlue)
         case .Fail:
             setUpBorderColor(color: UIColor.systemRed)
             setUpImage(imageName: "exclamationmark.triangle.fill", on: .right, color: UIColor.systemRed)
         }
         
     }
-        
+    
+    func removeImage(on side: TextFieldImageSide){
+        rightView = nil
+        switch side {
+        case .left:
+            leftView = nil
+        case .right:
+            rightView = nil
+        }
+    }
 }
 
 extension UITextField{

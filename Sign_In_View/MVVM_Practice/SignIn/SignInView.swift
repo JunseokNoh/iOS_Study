@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     
     var emailTextField: BindingTextField! {
         didSet {
+            emailTextField.draw()
             emailTextField.bind { [weak self] email in
                 self?.signInViewModel.account.email = email
                 if email.count < 1 {
@@ -22,48 +23,50 @@ class ViewController: UIViewController {
                     self?.emailTextField.textFieldBorderSetup(result: .Success)
                 }
             }
-            emailTextField.delegate = self
         }
     }
     
     var pwTextField: BindingTextField! {
         didSet {
+            pwTextField.isSecureTextEntry = true
             pwTextField.textContentType = .password
+            pwTextField.draw()
             pwTextField.bind { [weak self] pw in
-                print("pw : \(pw) \(self?.signInViewModel.account)")
                 self?.signInViewModel.account.password = pw
-                
                 if pw.count < 1 || pw != self?.signInViewModel.account.password2 {
                     self?.pwTextField.textFieldBorderSetup(result: .Fail)
-                }else{
-                    self?.pwTextField.textFieldBorderSetup(result: .Success)
-                    self?.pw2TextField.textFieldBorderSetup(result: .Success)
-                }
-            }
-            pwTextField.delegate = self
-        }
-    }
-    
-    var pw2TextField: BindingTextField! {
-        didSet {
-            pw2TextField.textContentType = .password
-            pw2TextField.bind { [weak self] pw2 in
-                self?.signInViewModel.account.password2 = pw2
-                print("pw2 : \(pw2) \(self?.signInViewModel.account)")
-                    
-                if pw2.count < 1 || pw2 != self?.signInViewModel.account.password {
                     self?.pw2TextField.textFieldBorderSetup(result: .Fail)
                 }else{
                     self?.pwTextField.textFieldBorderSetup(result: .Success)
                     self?.pw2TextField.textFieldBorderSetup(result: .Success)
                 }
             }
-            pw2TextField.delegate = self
+        }
+    }
+    
+    var pw2TextField: BindingTextField! {
+        didSet {
+            pw2TextField.isSecureTextEntry = true
+            pw2TextField.textContentType = .password
+            pw2TextField.draw()
+            pw2TextField.bind { [weak self] pw2 in
+                self?.signInViewModel.account.password2 = pw2
+                print("pw2 : \(pw2) \(self?.signInViewModel.account)")
+                    
+                if pw2.count < 1 || pw2 != self?.signInViewModel.account.password {
+                    self?.pwTextField.textFieldBorderSetup(result: .Fail)
+                    self?.pw2TextField.textFieldBorderSetup(result: .Fail)
+                }else{
+                    self?.pwTextField.textFieldBorderSetup(result: .Success)
+                    self?.pw2TextField.textFieldBorderSetup(result: .Success)
+                }
+            }
         }
     }
     
     var nameTextField: BindingTextField! {
         didSet {
+            nameTextField.draw()
             nameTextField.bind { [weak self] name in
                 self?.signInViewModel.account.name = name
                 if name.count < 1 {
@@ -72,12 +75,13 @@ class ViewController: UIViewController {
                     self?.nameTextField.textFieldBorderSetup(result: .Success)
                 }
             }
-            nameTextField.delegate = self
         }
     }
     
     var stuidTextField: BindingTextField! {
         didSet {
+            stuidTextField.keyboardType = .numberPad
+            stuidTextField.draw()
             stuidTextField.bind { [weak self] student_id in
                 self?.signInViewModel.account.student_id = student_id
                 if student_id.count < 1 {
@@ -86,7 +90,14 @@ class ViewController: UIViewController {
                     self?.stuidTextField.textFieldBorderSetup(result: .Success)
                 }
             }
-            stuidTextField.delegate = self
+        }
+    }
+    
+    var registerBtn : UIButton! {
+        didSet{
+            registerBtn.backgroundColor = .systemRed
+            registerBtn.setTitle("회원가입", for: .normal)
+            registerBtn.addTarget(self.signInViewModel, action: #selector(self.signInViewModel.sendAccount(_:)) , for: .touchUpInside)
         }
     }
     
@@ -121,6 +132,8 @@ class ViewController: UIViewController {
         self.view.addSubview(pw2Title)
         self.view.addSubview(nameTitle)
         self.view.addSubview(stuidTitle)
+        
+        self.view.addSubview(registerBtn)
     }
     
     func initTextField(){
@@ -129,6 +142,7 @@ class ViewController: UIViewController {
         pw2TextField = BindingTextField()
         nameTextField = BindingTextField()
         stuidTextField = BindingTextField()
+        registerBtn = UIButton()
     }
     func initTitle(){
         emailTitle.text = "Email"
@@ -141,8 +155,8 @@ class ViewController: UIViewController {
     func initConstraints(){
         let title_height = 30
         let height = 40
-        let top_padding = 30
-        let title_To_textField_margin = 5
+        let top_padding = 20
+        let title_To_textField_margin = 3
         let left_margin = 30
         let right_margin = -30
         
@@ -221,23 +235,11 @@ class ViewController: UIViewController {
             make.height.equalTo(height)
         }
         
-    }
-}
-
-extension ViewController : UITextFieldDelegate{
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        print(textField.text!)
-//        if textField.text!.count < 10 {
-//            //textField.redBorderSet()
-//            textField.layer.borderColor = UIColor.systemRed.cgColor
-//        } else {
-//            textField.layer.borderColor = UIColor.systemBlue.cgColor
-//        }
-//
-        return true
-    }
-    
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        return true
+        registerBtn.snp.makeConstraints{ make in
+            make.left.equalTo(left_margin)
+            make.right.equalTo(right_margin)
+            make.top.equalTo(stuidTextField.snp.bottom).offset(top_padding)
+            make.height.equalTo(height)
+        }
     }
 }
