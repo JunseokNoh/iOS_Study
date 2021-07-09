@@ -11,11 +11,10 @@ import UIKit
 class SignInViewModel {
     typealias Listener = (Account) -> Void
     var listener: Listener?
-    var account: Account
+    var account: Account = Account(email: "", password: "", password2: "", name: "", student_id: "")
     
-    init(listener : Listener?, account : Account){
+    init(listener : Listener?){
         self.listener = listener
-        self.account = account
     }
     
     func bind(listener: Listener?) {
@@ -23,6 +22,8 @@ class SignInViewModel {
     }
 
     @objc func sendAccount(_ button: UIButton) {
-        print(account)
+        let signInRequest = SignInRequest(requestBodyObject: self.account, requestMethod: .Post, enviroment: .SignIn)
+        let result = signInRequest.request()
+        print(result)
     }
 }

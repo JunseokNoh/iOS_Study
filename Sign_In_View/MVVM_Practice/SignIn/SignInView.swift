@@ -10,7 +10,7 @@ import SnapKit
 
 class ViewController: UIViewController {
 
-    var signInViewModel : SignInViewModel = SignInViewModel(listener: nil, account: Account(email: "", password: "", password2: "", name: "", student_id: ""))
+    var signInViewModel : SignInViewModel = SignInViewModel(listener: nil)
     
     var emailTextField: BindingTextField! {
         didSet {

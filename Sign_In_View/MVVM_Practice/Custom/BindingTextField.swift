@@ -21,6 +21,7 @@ class BindingTextField: UITextField {
         guard let text = text else { return }
         textChanged(text)
     }
+
     
     func draw(){
         setUpBorder()
