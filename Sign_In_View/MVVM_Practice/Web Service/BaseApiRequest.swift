@@ -52,9 +52,9 @@ extension BaseApiRequest{
     var baseUrl: String {
         switch enviroment {
         case .SignIn:
-            return "https://api.myjson.com/SignIn"
+            return "http://218.233.221.188:5002/SignIn"
         default:
-            return "https://api.myjson.com/"
+            return "http://api.myjson.com/"
         }
     }
 }

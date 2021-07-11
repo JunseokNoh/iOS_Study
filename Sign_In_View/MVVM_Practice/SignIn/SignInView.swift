@@ -51,8 +51,6 @@ class ViewController: UIViewController {
             pw2TextField.draw()
             pw2TextField.bind { [weak self] pw2 in
                 self?.signInViewModel.account.password2 = pw2
-                print("pw2 : \(pw2) \(self?.signInViewModel.account)")
-                    
                 if pw2.count < 1 || pw2 != self?.signInViewModel.account.password {
                     self?.pwTextField.textFieldBorderSetup(result: .Fail)
                     self?.pw2TextField.textFieldBorderSetup(result: .Fail)
@@ -97,7 +95,20 @@ class ViewController: UIViewController {
         didSet{
             registerBtn.backgroundColor = .systemRed
             registerBtn.setTitle("회원가입", for: .normal)
-            registerBtn.addTarget(self.signInViewModel, action: #selector(self.signInViewModel.sendAccount(_:)) , for: .touchUpInside)
+            registerBtn.addAction{
+                self.signInViewModel.getEvent(successHandler: { response in
+                    if response.result == 1 {
+                        let alert = UIAlertController(title: "회원가입성공", message: "확인 버튼을 누르면 로그인 페이지로 이동합니다.", preferredStyle: .alert)
+                        let actionDefault = UIAlertAction(title: "확인", style: .default){ (action) in
+
+                        }
+                        alert.addAction(actionDefault)
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }, failHandler: { Error in
+                    print(Error)
+                })
+            }
         }
     }
     
@@ -109,15 +120,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initTitle()
-        initTextField()
+        setupTitle()
+        initUI()
         addView()
-        initConstraints()
+        setupConstraints()
         
-        signInViewModel.bind { [weak self] account in
-           
-        }
-        
+//        signInViewModel.bind { [weak self] account in
+//
+//        }
     }
     
     func addView(){
@@ -136,7 +146,7 @@ class ViewController: UIViewController {
         self.view.addSubview(registerBtn)
     }
     
-    func initTextField(){
+    func initUI(){
         emailTextField = BindingTextField()
         pwTextField = BindingTextField()
         pw2TextField = BindingTextField()
@@ -144,7 +154,7 @@ class ViewController: UIViewController {
         stuidTextField = BindingTextField()
         registerBtn = UIButton()
     }
-    func initTitle(){
+    func setupTitle(){
         emailTitle.text = "Email"
         pwTitle.text = "비밀번호"
         pw2Title.text = "비밀번호 확인"
@@ -152,7 +162,7 @@ class ViewController: UIViewController {
         stuidTitle.text = "학번"
     }
     
-    func initConstraints(){
+    func setupConstraints(){
         let title_height = 30
         let height = 40
         let top_padding = 20
@@ -235,11 +245,18 @@ class ViewController: UIViewController {
             make.height.equalTo(height)
         }
         
+        // MARK: - 회원가입 버튼
         registerBtn.snp.makeConstraints{ make in
             make.left.equalTo(left_margin)
             make.right.equalTo(right_margin)
             make.top.equalTo(stuidTextField.snp.bottom).offset(top_padding)
             make.height.equalTo(height)
         }
+    }
+}
+
+extension UIControl {
+    func addAction(for controlEvents: UIControl.Event = .touchUpInside, _ closure: @escaping()->()) {
+        addAction(UIAction {(action: UIAction) in closure() }, for: controlEvents)
     }
 }
