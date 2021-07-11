@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f8f3a99f-c590-4df6-bad4-f785f6b89764" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/MVVM_Practice/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/MVVM_Practice/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice.xcodeproj/project.xcworkspace/contents.xcworkspacedata" beforeDir="false" afterPath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice.xcodeproj/project.xcworkspace/contents.xcworkspacedata" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" beforeDir="false" afterPath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice/AppDelegate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice/AppDelegate.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice/Assets.xcassets/AccentColor.colorset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice/Assets.xcassets/AccentColor.colorset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice/Assets.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice/Assets.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice/Assets.xcassets/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice/Assets.xcassets/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice/Base.lproj/LaunchScreen.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice/Base.lproj/LaunchScreen.storyboard" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice/Base.lproj/Main.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice/Base.lproj/Main.storyboard" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice/BindingTextField.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice/BindingTextField.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice/Model.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice/Model.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice/SceneDelegate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice/SceneDelegate.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice/ViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice/ViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice/ViewModel.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MVVM_Practice/MVVM_Practice/ViewModel.swift" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="SignIn" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1vATbigh6Bl68JnCdlKLxxd8X5S" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f8f3a99f-c590-4df6-bad4-f785f6b89764" name="Default Changelist" comment="" />
+      <created>1626003966972</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1626003966972</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
