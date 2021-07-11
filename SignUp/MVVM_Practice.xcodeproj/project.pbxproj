@@ -79,7 +79,7 @@
 			children = (
 				6897E4682697655E00F99262 /* Web Service */,
 				6897E4672694865500F99262 /* Custom */,
-				6897E463269443B800F99262 /* SignIn */,
+				6897E463269443B800F99262 /* SignUp */,
 				6897E4492692CF5A00F99262 /* AppDelegate.swift */,
 				6897E46526945DBB00F99262 /* Main.storyboard */,
 				6897E44B2692CF5A00F99262 /* SceneDelegate.swift */,
@@ -90,14 +90,14 @@
 			path = MVVM_Practice;
 			sourceTree = "<group>";
 		};
-		6897E463269443B800F99262 /* SignIn */ = {
+		6897E463269443B800F99262 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
 				6897E44D2692CF5A00F99262 /* SignInView.swift */,
 				6897E45F2692CFEA00F99262 /* SignInViewModel.swift */,
 				6897E45D2692CFD900F99262 /* SignInModel.swift */,
 			);
-			path = SignIn;
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 		6897E4672694865500F99262 /* Custom */ = {
